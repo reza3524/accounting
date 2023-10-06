@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: accounting
+  main:
+    allow-bean-definition-overriding: true
+
+server:
+  port: 0
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    instance-id: ${spring.application.name}:${random.int}
+    hostname: localhost
