@@ -10,14 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/account")
+@RequestMapping("/api/account")
 @RequiredArgsConstructor
 public class AccountController {
 
     private final AccountService service;
 
-    @GetMapping("{id}")
+    @GetMapping("v1/{id}")
    public ResponseEntity<Account> getById(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(service.findById(id));
+    }
+
+    @GetMapping("v2/{id}")
+    public ResponseEntity<Account> getByIdV2(@PathVariable("id") Long id) {
         return ResponseEntity.ok(service.findById(id));
     }
 }
